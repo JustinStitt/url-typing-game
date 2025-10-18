@@ -58,7 +58,7 @@ setInterval(() => {
 
 setInterval(() => {
   delay = Math.max(delay - 30, min_delay)
-}, 5000) // every 5 seconds, make the game go faster
+}, 4000) // every 5 seconds, make the game go faster
 
 
 document.addEventListener("keydown", (event) => {
@@ -66,7 +66,7 @@ document.addEventListener("keydown", (event) => {
   if (key === first_typable) {
     successfully_typed_chars += 1;
     idx = getFirstTypable(true);
-    game = game.substring(0, idx) + game.substring(idx + 1);
+    game = game.substring(0, idx) + game.substring(idx + 1) + blank_char;
     window.location.hash = game + "[" + Math.floor(getWPM()) + "]";
     first_typable = getFirstTypable();
   }
