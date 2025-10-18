@@ -52,7 +52,7 @@ setInterval(() => {
 // spawn new words
 setInterval(() => {
   const chosen_word = generateWord()
-  game = game.substring(0, game.length - chosen_word.length) + chosen_word
+  game = game + chosen_word
   first_typable = getFirstTypable();
 }, delay * 5)
 
@@ -66,7 +66,7 @@ document.addEventListener("keydown", (event) => {
   if (key === first_typable) {
     successfully_typed_chars += 1;
     idx = getFirstTypable(true);
-    game = game.substring(0, idx) + game.substring(idx + 1) + blank_char;
+    game = game.substring(0, idx) + game.substring(idx + 1);
     window.location.hash = game + "[" + Math.floor(getWPM()) + "]";
     first_typable = getFirstTypable();
   }
