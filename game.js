@@ -4,11 +4,11 @@ const blank_char = "_"
 const min_delay = 45; // we get rate-limited around here
 const start_time = performance.now();
 
-let game = blank_char.repeat(sz) + 'test';
+let game = blank_char.repeat(sz)
 let to_type = ""
 let first_typable = null;
 let successfully_typed_chars = 0;
-let delay = 200;
+let delay = 60;
 
 window.location.hash = game;
 
