@@ -4,7 +4,7 @@ const common_consonants = "tnrsldhcmfpgwybvkjxqz";
 const common_vowels = "eaiouy";
 
 const common = [
-    "and", "a", "of", "the", "be", "to", "in", "that", "have", "I",
+    "and", "a", "of", "the", "be", "to", "in", "that", "have",
     "it", "for", "not", "on", "with", "as", "you", "at", "this", "but",
     "by", "from", "or", "like"
 ];
