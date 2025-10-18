@@ -8,7 +8,7 @@ let game = blank_char.repeat(sz) + 'test';
 let to_type = ""
 let first_typable = null;
 let successfully_typed_chars = 0;
-let delay = 100;
+let delay = 200;
 
 window.location.hash = game;
 
@@ -54,10 +54,10 @@ setInterval(() => {
   const chosen_word = generateWord()
   game = game.substring(0, game.length - chosen_word.length) + chosen_word
   first_typable = getFirstTypable();
-}, delay * 7)
+}, delay * 5)
 
 setInterval(() => {
-  delay = Math.max(delay - 15, min_delay)
+  delay = Math.max(delay - 30, min_delay)
 }, 5000) // every 5 seconds, make the game go faster
 
 
@@ -66,7 +66,8 @@ document.addEventListener("keydown", (event) => {
   if (key === first_typable) {
     successfully_typed_chars += 1;
     idx = getFirstTypable(true);
-    game = game.substring(0, idx) + blank_char + game.substring(idx + 1);
+    game = game.substring(0, idx) + game.substring(idx + 1);
+    window.location.hash = game + "[" + Math.floor(getWPM()) + "]";
     first_typable = getFirstTypable();
   }
 })
