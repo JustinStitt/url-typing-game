@@ -1,16 +1,18 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"net/http"
 )
 
 func main() {
-	// Serve static files from current directory
+	port := flag.String("port", "8080", "port to listen on")
+	flag.Parse()
+
 	fs := http.FileServer(http.Dir("."))
 	http.Handle("/", fs)
 
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		log.Fatal(err)
-	}
+	log.Printf("Server starting on http://localhost:%s\n", *port)
+	log.Fatal(http.ListenAndServe(":"+*port, nil))
 }

@@ -1,0 +1,12 @@
+[Unit]
+Description=A URL typing game
+[Install]
+WantedBy=multi-user.target
+[Service]
+Type=simple
+User=ubuntu
+PermissionsStartOnly=true
+WorkingDirectory=/home/ubuntu/repos/url-typing-game/
+ExecStart=/usr/local/go/bin/go run main.go -port 9911
+Restart=on-failure
+TimeoutSec=600
