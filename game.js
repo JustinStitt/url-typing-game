@@ -8,7 +8,7 @@ let game = blank_char.repeat(sz) + 'test';
 let to_type = ""
 let first_typable = null;
 let successfully_typed_chars = 0;
-let delay = 50;
+let delay = 100;
 
 window.location.hash = game;
 
@@ -29,16 +29,7 @@ function getWPM() {
   return Math.floor((successfully_typed_chars / 5) / ((performance.now() - start_time) / 60000));
 }
 
-// for debugging
-function generateRandomString(length) {
-  const characters = 'abcdefghijklmnopqrstuvwxyz';
-  let result = '';
-  const charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
+
 
 function lose() {
   alert(`you lost... wpm: ${getWPM()}`);
@@ -60,9 +51,8 @@ setInterval(() => {
 
 // spawn new words
 setInterval(() => {
-  const chosen_word = generateRandomString(Math.floor(Math.random() * 6))
+  const chosen_word = generateWord()
   game = game.substring(0, game.length - chosen_word.length) + chosen_word
-  // game = game + chosen_word
   first_typable = getFirstTypable();
 }, delay * 7)
 
